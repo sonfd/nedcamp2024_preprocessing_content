@@ -1,0 +1,36 @@
+<?php
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Add a 'mymodule_related_articles' display field to article nodes.
+ *
+ * Implements hook_entity_extra_field_info().
+ */
+function mymodule_entity_extra_field_info() {
+  $extra_fields = [];
+
+  $extra_fields['node']['article']['display']['mymodule_related_articles'] = [
+    'label' => t('Related articles'),
+    'description' => t('Display related articles.'),
+    'visible' => FALSE,
+  ];
+
+  return $extra_fields;
+}
+
+/**
+ * Build the 'mymodule_related_articles' display field.
+ *
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function mymodule_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($display->getComponent('mymodule_related_articles')) {
+    $build['mymodule_related_articles'] = [
+      '#type' => 'view',
+      '#name' => 'related_articles',
+      '#display_id' => 'latest_3',
+    ];
+  }
+}

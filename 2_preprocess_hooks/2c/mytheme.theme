@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Add a related_articles element to the bottom of article nodes.
+ *
+ * Implements hook_preprocess_node().
+ */
+function mytheme_preprocess_node(&$variables) {
+  if ($variables['node']->getType() == 'article' && $variables['view_mode'] == 'full') {
+    $variables['content']['related_articles'] = [
+      'content' => views_embed_view('related_articles', 'latest_3'),
+      '#weight' => 100,
+    ];
+  }
+}

@@ -1,0 +1,22 @@
+<?php
+
+use Drupal\Core\Render\Element;
+
+/**
+ * Alter article full page displays.
+ *
+ * - Add a default related articles element to the field_related_articles field
+ *   when the field is left empty.
+ *
+ * Implements hook_preprocess_node().
+ */
+function mytheme_preprocess_node(&$variables) {
+  if (!empty($variables['content']['field_related_articles'])) {
+	  if ($variables['node']->getType() == 'article' && $variables['view_mode'] == 'full') {
+	    $has_related_articles = !empty(Element::getVisibleChildren($variables['content']['field_related_articles']));
+	    if (!$has_related_articles) {
+	      $variables['content']['field_related_articles']['default'] = views_embed_view('related_articles', 'latest_3');
+	    }
+	  }
+  }
+}

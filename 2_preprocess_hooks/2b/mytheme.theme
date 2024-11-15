@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Add a 'button' class to field_link links.
+ *
+ * Implements hook_preprocess_field__FIELD_NAME().
+ */
+function mytheme_preprocess_field__field_link(&$variables) {
+  foreach ($variables['items'] as &$item) {
+    $item['content']['#attributes']['class'][] = 'button';
+  }
+}

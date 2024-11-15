@@ -1,0 +1,14 @@
+{% set related_articles = mymodule_view('related_articles', 'latest_3')|render %}
+{% set has_related_articles = related_articles is real_content %}
+
+<article>
+  {# ... #}
+
+  {% if has_related_articles %}
+    <div class="related-articles-wrapper">
+      {{ related_articles }}
+    </div>
+  {% endif %}
+
+  {# ... #}
+</article>

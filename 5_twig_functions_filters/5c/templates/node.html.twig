@@ -1,0 +1,17 @@
+{% set featured_article = content.field_paragraphs|mymodule_with_only_first_of_bundle('article')|render %}
+{% set has_featured_article = featured_article is real_content %}
+
+<article>
+  {# ... #}
+
+  {{ content|without('field_related_content') }}
+
+  {% if has_featured_article %}
+    <div class='featured-article-wrapper'>
+      <h2>{{ "My Featured Article"|t }}</h2>
+      {{ featured_article }}
+    </div>
+  {% endif %}
+
+  {# ... #}
+</article>

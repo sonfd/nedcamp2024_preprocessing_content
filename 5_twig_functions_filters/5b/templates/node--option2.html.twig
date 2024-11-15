@@ -1,0 +1,10 @@
+{% set field_link_with_class = content.field_link|mymodule_add_link_class('button') %}
+{% set content = content|merge({'field_link': field_link_with_class}) %}
+
+<article>
+	{# ... #}
+
+	{{ content }}
+
+	{# ... #}
+</article>
