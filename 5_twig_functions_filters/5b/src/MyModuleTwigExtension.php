@@ -13,9 +13,9 @@ use Twig\TwigFilter;
  */
 class MyModuleTwigExtension extends AbstractExtension {
 
-	/**
-	 * {@inheritdoc}
-	 */
+  /**
+   * {@inheritdoc}
+   */
   public function getFilters(): array {
     $filters = [
       new TwigFilter('mymodule_add_link_class', [self::class, 'addLinkClass']),

@@ -12,11 +12,11 @@ use Drupal\Core\Render\Element;
  */
 function mytheme_preprocess_node(&$variables) {
   if (!empty($variables['content']['field_related_articles'])) {
-	  if ($variables['node']->getType() == 'article' && $variables['view_mode'] == 'full') {
-	    $has_related_articles = !empty(Element::getVisibleChildren($variables['content']['field_related_articles']));
-	    if (!$has_related_articles) {
-	      $variables['content']['field_related_articles']['default'] = views_embed_view('related_articles', 'latest_3');
-	    }
-	  }
+      if ($variables['node']->getType() == 'article' && $variables['view_mode'] == 'full') {
+        $has_related_articles = !empty(Element::getVisibleChildren($variables['content']['field_related_articles']));
+        if (!$has_related_articles) {
+          $variables['content']['field_related_articles']['default'] = views_embed_view('related_articles', 'latest_3');
+        }
+      }
   }
 }

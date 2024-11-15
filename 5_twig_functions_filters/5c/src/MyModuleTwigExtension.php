@@ -13,9 +13,9 @@ use Twig\TwigFilter;
  */
 class MyModuleTwigExtension extends AbstractExtension {
 
-	/**
-	 * {@inheritdoc}
-	 */
+  /**
+   * {@inheritdoc}
+   */
   public function getFilters(): array {
     $filters = [
       new TwigFilter('mymodule_with_only_first_of_bundle', [self::class, 'withOnlyFirstOfBundle']),

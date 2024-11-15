@@ -6,23 +6,23 @@
 {% set has_author = show_author and rendered_author is real_content %}
 
 <article>
-	{# ... #}
+  {# ... #}
 
-	{% if has_published_date or has_author %}
-		<div class="article-publishing-info">
-			{% if has_published_date %}
-				<div class="publish-date-wrapper">
-					{{ rendered_published_date }}
-				</div>
-			{% endif %}
+  {% if has_published_date or has_author %}
+    <div class="article-publishing-info">
+      {% if has_published_date %}
+        <div class="publish-date-wrapper">
+          {{ rendered_published_date }}
+        </div>
+      {% endif %}
 
-			{% if has_author %}
-				<div class="author-wrapper">
-					{{ rendered_author }}
-				</div>
-			{% endif %}
-		</div>
-	{% endif %}
+      {% if has_author %}
+        <div class="author-wrapper">
+          {{ rendered_author }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
 
-	{# ... #}
+  {# ... #}
 </article>
