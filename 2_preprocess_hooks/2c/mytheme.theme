@@ -8,7 +8,11 @@
 function mytheme_preprocess_node(&$variables) {
   if ($variables['node']->getType() == 'article' && $variables['view_mode'] == 'full') {
     $variables['content']['related_articles'] = [
-      'content' => views_embed_view('related_articles', 'latest_3'),
+      'content' => [
+        '#type' => 'view',
+        '#name' => 'related_articles',
+        '#display_id' => 'latest_3',
+      ],
       '#weight' => 100,
     ];
   }
